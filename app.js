@@ -4,9 +4,11 @@ import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 
 import usersRouter from './routes/users.js';
+import dateRouter from './routes/date.js';
 
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
+
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -20,5 +22,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/users', usersRouter);
+app.use('/api/getTime', dateRouter);
+// Can create general api route and have nested subroutes for indv apis
+// app.use('api', apiRouter);
 
 export default app;
